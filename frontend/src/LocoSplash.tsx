@@ -1,7 +1,7 @@
 export const LocoSplash = () => {
   return (
     <div>
-      <header className="navbar fixed-top">
+      <header className="navbar fixed-top bg-green-300">
         <div className="container">
           <a href="https://loco.rs?ref=starter">Loco</a>
           <ul className="navbar-nav ">
