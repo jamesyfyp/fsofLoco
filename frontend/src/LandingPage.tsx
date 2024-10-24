@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 import { Truck, Wrench, Clock, BarChart, Star, ChevronRight } from "lucide-react"
 
 
+
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -137,7 +138,9 @@ export default function LandingPage() {
               </div>
               <div className="w-full max-w-sm space-y-2">
                 <form className="flex flex-col space-y-4">
-                  <Input type="email" placeholder="Enter your email" />
+                  <Input required type="text" placeholder="Your Name" />
+                  <Input required type="text" placeholder="Your Company" />
+                  <Input required type="email" placeholder="Enter your email" />
                   <Button type="submit">
                     Get Started <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
