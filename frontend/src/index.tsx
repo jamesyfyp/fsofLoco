@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { LocoSplash } from "./LocoSplash";
+import LandingPage from "./LandingPage";
 
-import "./index.css";
+import "../src/index.css";
 
 const root = document.getElementById("root");
 
@@ -12,6 +12,6 @@ if (!root) {
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <LocoSplash />
+    <LandingPage />
   </React.StrictMode>,
 );

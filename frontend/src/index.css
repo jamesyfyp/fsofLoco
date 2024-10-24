@@ -9,96 +9,35 @@ body {
   font-weight: 400;
   line-height: 1.5;
   background: #212529;
-  color: #dee2e6;
+  color: #353738;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(29, 45, 53, 0)
 }
-
-ul {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  list-style: none;
-}
-
-a {
-  color: #dee2e6;
-  text-decoration: none
-}
-
-.container {
-  max-width: 1320px;
-  padding-right: var(--bs-gutter-x, 24px);
-  padding-left: var(--bs-gutter-x, 24px);
-  margin-right: auto;
-  margin-left: auto
+html {
+  scroll-behavior: smooth;
 }
 
 
-.navbar {
-  padding-top: .5rem;
-  padding-bottom: .5rem
-}
-
-.navbar .container {
-  display: flex;
-  justify-content: space-between
-}
-
-.navbar-nav {
-  margin-bottom: 0;
-}
-.navbar-nav li {
-    display: inline-flex;
-    margin-right: 10px;
-}
-
-.fixed-top {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-}
-
-body {
-  font-size: 1rem;
-  padding-top: 6rem !important
-}
-
-.navbar {
-  border-bottom: 1px solid #2a2f34;
-}
-
-
-.logo {
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.logo img {
-  width: 250px;
-}
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-}
-
-footer ul {
-  display: inline-block;
-  padding: 0;
-}
-
-footer ul li {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 5px;
-  list-style: none;
-}
-
-footer ul li:not(:last-child) {
-  border-right: 1px solid #ccc;
-  padding-right: 5px;
-  height: 15px;
+@layer base {
+  :root {
+    --radius: 0.5rem
+  ;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%}
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%
+  }
 }
