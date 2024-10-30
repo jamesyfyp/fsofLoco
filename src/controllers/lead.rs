@@ -5,7 +5,7 @@ use loco_rs::prelude::*;
 use axum::debug_handler;
 use serde::{Deserialize, Serialize};
 
-use crate::models::_entities::leads::{ActiveModel, Entity, Model};
+use crate::models::_entities::leads::{ActiveModel, Entity};
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct Params {
@@ -23,8 +23,8 @@ impl Params {
 }
 
 #[debug_handler]
-pub async fn index(State(_ctx): State<AppContext>) -> Result<Response> {
-    format::text("test")
+pub async fn list(State(ctx): State<AppContext>) -> Result<Response> {
+    format::json(Entity::find().all(&ctx.db).await?)
 }
 
 pub async fn add(State(ctx): State<AppContext>, Json(params): Json<Params>) -> Result<Response> {
@@ -40,6 +40,6 @@ pub async fn add(State(ctx): State<AppContext>, Json(params): Json<Params>) -> R
 pub fn routes() -> Routes {
     Routes::new()
         .prefix("api/leads/")
-        .add("/", get(index))
+        .add("/", get(list))
         .add("/", post(add))
 }

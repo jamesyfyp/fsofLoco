@@ -1,10 +1,29 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Truck, Wrench, Clock, BarChart, Star, ChevronRight } from "lucide-react"
-
+import { Truck, Wrench, Clock, BarChart, Star, ChevronRight, RefreshCcw } from "lucide-react"
+import { useState } from "react"
+import { useMutation } from "@tanstack/react-query"
 
 
 export default function LandingPage() {
+  const [lead, setLead] = useState({
+    name: "",
+    company: "",
+    email: ""
+  })
+
+  const postLead = useMutation({
+    mutationFn : (newLead) => {
+      return fetch("http://localhost:5150/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:5150"
+        },
+        body: JSON.stringify(newLead)
+      })
+    }
+  })
   return (
     <div className="flex flex-col min-h-screen">
       <header className="min-w-full px-4 lg:px-6 h-16 flex items-center bg-black text-white fixed top-0 z-50">
@@ -137,11 +156,29 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
-                <form className="flex flex-col space-y-4">
-                  <Input required type="text" placeholder="Your Name" />
-                  <Input required type="text" placeholder="Your Company" />
-                  <Input required type="email" placeholder="Enter your email" />
-                  <Button type="submit">
+                <form className="flex flex-col space-y-4" onSubmit={(e)=>{
+                    e.preventDefault()
+                    postLead.mutate(lead)
+                  }}>
+                  <Input required type="text" placeholder="Your Name" value={lead.name} onChange={(e) => {
+                    let formState = window.structuredClone(lead)
+                    formState.name = e.target.value
+                    setLead(formState)
+                  }}/>
+                  <Input required type="text" placeholder="Your Company" value={lead.company} onChange={(e) => {
+                    let formState = window.structuredClone(lead)
+                    formState.company = e.target.value
+                    setLead(formState)
+                  }}/>
+                  <Input required type="email" placeholder="Enter your email" value={lead.email} onChange={(e) => {
+                    let formState = window.structuredClone(lead)
+                    formState.email = e.target.value
+                    setLead(formState)
+                  }}/>
+                  <div>
+                     
+                  </div>
+                  <Button type="submit" disabled={postLead.isPending}>
                     Get Started <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
                 </form>
